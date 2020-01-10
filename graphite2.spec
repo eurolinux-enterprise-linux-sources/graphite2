@@ -1,12 +1,12 @@
 Name:           graphite2
-Version:        1.3.10
+Version:        1.3.6
 Release:        1%{?dist}
 Summary:        Font rendering capabilities for complex non-Roman writing systems
 Group:          Development/Tools
 
 License:        (LGPLv2+ or GPLv2+ or MPL) and (Netscape or GPLv2+ or LGPLv2+)
-URL:            https://sourceforge.net/projects/silgraphite/
-Source0:        https://downloads.sourceforge.net/project/silgraphite/graphite2//%{name}-%{version}.tgz
+URL:            http://sourceforge.net/projects/silgraphite/
+Source0:        http://downloads.sourceforge.net/silgraphite/graphite-%{version}.tgz
 Patch0:         graphite-arm-nodefaultlibs.patch
 Patch1:         graphite2-1.2.0-cmakepath.patch
 
@@ -58,8 +58,7 @@ ctest
 %postun -p /sbin/ldconfig
 
 %files
-%license LICENSE COPYING
-%doc ChangeLog README.md
+%doc LICENSE COPYING ChangeLog
 %{_bindir}/gr2fonttest
 %{_libdir}/libgraphite2.so.3
 %{_libdir}/libgraphite2.so.3.0.1
@@ -74,16 +73,11 @@ ctest
 %{_libdir}/pkgconfig/graphite2.pc
 
 %changelog
-* Mon Feb 29 2016 Caolán McNamara <caolanm@redhat.com> - 1.3.10-1
-- Resolves: rhbz#1472290
-  CVE-2017-7771 CVE-2017-7772 CVE-2017-7773 CVE-2017-7774
-  CVE-2017-7775 CVE-2017-7776 CVE-2017-7777 CVE-2017-7778
-
 * Mon Feb 29 2016 Caolán McNamara <caolanm@redhat.com> - 1.3.6-1
-- Related: rhbz#1309053 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
+- Related: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
 
 * Wed Feb 17 2016 Caolán McNamara <caolanm@redhat.com> - 1.3.5-1
-- Resolves: rhbz#1309053 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
+- Resolves: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
 
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
