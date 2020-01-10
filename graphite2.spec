@@ -1,19 +1,19 @@
 Name:           graphite2
-Version:        1.3.6
-Release:        1%{?dist}
+Version:        1.2.2
+Release:        5%{?dist}
 Summary:        Font rendering capabilities for complex non-Roman writing systems
 Group:          Development/Tools
 
 License:        (LGPLv2+ or GPLv2+ or MPL) and (Netscape or GPLv2+ or LGPLv2+)
 URL:            http://sourceforge.net/projects/silgraphite/
-Source0:        http://downloads.sourceforge.net/silgraphite/graphite-%{version}.tgz
+Source0:        http://downloads.sourceforge.net/silgraphite/graphite2-%{version}.tgz
 Patch0:         graphite-arm-nodefaultlibs.patch
 Patch1:         graphite2-1.2.0-cmakepath.patch
 
 BuildRequires:  cmake
 BuildRequires:  freetype-devel
 BuildRequires:  doxygen asciidoc
-BuildRequires:  texlive-helvetic texlive-sectsty texlive-tocloft texlive-xtab texlive-multirow fonttools
+BuildRequires:  texlive-helvetic texlive-sectsty texlive-tocloft texlive-xtab texlive-multirow
 
 Obsoletes:      silgraphite < 2.3.1-5
 
@@ -41,7 +41,7 @@ Includes and definitions for developing with graphite2.
 %patch1 -p1 -b .cmake
 
 %build
-%cmake -DGRAPHITE2_COMPARE_RENDERER=OFF  .
+%cmake -DGRAPHITE2_COMPARE_RENDERER=OFF .
 make %{?_smp_mflags}
 make docs
 sed -i -e 's!<a id="id[a-z]*[0-9]*"></a>!!g' doc/manual.html
@@ -60,7 +60,6 @@ ctest
 %files
 %doc LICENSE COPYING ChangeLog
 %{_bindir}/gr2fonttest
-%{_libdir}/libgraphite2.so.3
 %{_libdir}/libgraphite2.so.3.0.1
 
 %files devel
@@ -70,39 +69,15 @@ ctest
 %{_libdir}/%{name}/graphite2.cmake
 %{_includedir}/%{name}
 %{_libdir}/libgraphite2.so
+%{_libdir}/libgraphite2.so.3
 %{_libdir}/pkgconfig/graphite2.pc
 
 %changelog
-* Mon Feb 29 2016 Caolán McNamara <caolanm@redhat.com> - 1.3.6-1
-- Related: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.2.2-5
+- Mass rebuild 2014-01-24
 
-* Wed Feb 17 2016 Caolán McNamara <caolanm@redhat.com> - 1.3.5-1
-- Resolves: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526
-
-* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.4-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.4-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Sat Feb 21 2015 Till Maas <opensource@till.name> - 1.2.4-4
-- Rebuilt for Fedora 23 Change
-  https://fedoraproject.org/wiki/Changes/Harden_all_packages_with_position-independent_code
-
-* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.4-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.4-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
-* Thu Apr 03 2014 Nicholas van Oudtshoorn <vanoudt@gmail.com> - 1.2.4-1
-- New upstream release
-
-* Sat Dec 21 2013 Ville Skyttä <ville.skytta@iki.fi> - 1.2.2-5
-- Move *.so.major symlink to main package.
-
-* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.2-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.2.2-4
+- Mass rebuild 2013-12-27
 
 * Mon Jun 24 2013 Caolán McNamara <caolanm@redhat.com> - 1.2.2-3
 - clarify licenses
